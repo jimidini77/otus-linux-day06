@@ -14,7 +14,7 @@
 
 # **Выполнение**
 
-###Настройка сервера NFS
+### Настройка сервера NFS
 
 Установка утилит для NFS
 ```
@@ -66,7 +66,7 @@ exportfs -r
 /srv/share  192.168.50.11/32(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,root_squash,no_all_squash)
 ```
 
-###Настройка клиента NFS
+### Настройка клиента NFS
 
 Установка утилит для NFS
 ```
