@@ -35,6 +35,7 @@ systemctl enable nfs --now
 
 Проверка прослушиваемых портов сервисами NFS
 ```
+[root@nfss ~]# ss -tnplu | grep -e '2049\|20048\|111'
 udp    UNCONN     0      0         *:20048                 *:*                   users:(("rpc.mountd",pid=3429,fd=7))
 udp    UNCONN     0      0         *:111                   *:*                   users:(("rpcbind",pid=339,fd=6))
 udp    UNCONN     0      0         *:2049                  *:*
@@ -78,7 +79,7 @@ yum install nfs-utils
 systemctl enable firewalld --now
 ```
 
-Настройка автоматического монтирования NFS-ресурса при первом обращении к нему
+Настройка автоматического монтирования NFS-ресурса при первом обращении к нему,
 используется 3 версия NFS через UDP
 ```
 echo "192.168.50.10:/srv/share/ /mnt nfs vers=3,proto=udp,noauto,x-systemd.automount 0 0" >> /etc/fstab
@@ -90,8 +91,8 @@ echo "192.168.50.10:/srv/share/ /mnt nfs vers=3,proto=udp,noauto,x-systemd.autom
 systemd-1 on /mnt type autofs (rw,relatime,fd=49,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=25331)
 ```
 
- 
 # **Результаты**
 
-Полученный в ходе работы `Vagrantfile` и внешние скрипты для shell provisioner `*.sh` помещены в публичный репозиторий:
+Выполняемые при конфигурировании сервера и клиента команды перенесены в bash-скрипты для автоматического конфигурирования машин при развёртывании.
+Полученный в ходе работы `Vagrantfile` и внешние скрипты для shell provisioner помещены в публичный репозиторий:
 - **GitHub** - https://github.com/jimidini77/otus-linux-day06
